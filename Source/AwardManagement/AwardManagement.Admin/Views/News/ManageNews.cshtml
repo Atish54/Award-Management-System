@@ -1,0 +1,267 @@
+﻿@model AwardManagment.BusinessObjects.Model.BONews
+
+@{
+    ViewBag.Title = "ManageNews";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnclear").hide();
+    });
+</script>
+
+@if (ViewBag.UpdateSuccess == true)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Done",
+                text: "Updated Sucessfully!",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+                type: "success"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+    </script>
+}
+else if (ViewBag.UpdateSuccess == false)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Done",
+                text: "Update Data Unsucessfully!",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+                type: "success"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+    </script>
+}
+else if (ViewBag.InsertSuccess == true)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Done",
+                text: "Inserted Sucessfully!",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+                type: "success"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+    </script>
+}
+else if (ViewBag.InsertSuccess == false)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Done",
+                text: "Inserted Unsucessfully!",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+                type: "success"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+    </script>
+}
+else if (ViewBag.DataNull == true)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Information!",
+                text: "Please Enter Valid Data",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-info"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+    </script>
+}
+
+<div class="main-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="purple">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">News Detail</h4>
+                        @{Html.EnableClientValidation();}
+                        @{Html.EnableUnobtrusiveJavaScript();}
+                        @using (Html.BeginForm("InsertNews", "News", FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+                            <div id="Newsform">
+                                <div class="row">
+                                    <label class="col-md-3 label-on-left bottom">Title</label>
+                                    <div class="col-md-9">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            @Html.EditorFor(N => N.News1, new { htmlAttributes = new { @class = "form-control", @name = "newsname", @id = "newsname" } })
+                                            @Html.ValidationMessageFor(model => model.News1)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <button type="submit" class="btn btn-primary pull-right">Submit <i class="material-icons">send</i></button>
+                        }
+                        <button type="submit" id="btnclear" onclick="ClearData()" class="btn btn-primary pull-left">Clear @*<i class="material-icons">send</i>*@</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="purple">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">News Detail</h4>
+                        <div class="toolbar">
+                            <!--        Here you can write extra buttons/actions for the toolbar              -->
+                        </div>
+                        <div class="material-datatables table-responsive">
+                            <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th class="disabled-sorting text-center label-on-right">Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+
+                                        <th>Category</th>
+
+                                        <th class="text-center label-on-right">Action</th>
+                                    </tr>
+
+                                </tfoot>
+                                <tbody>
+                                    @foreach (var item in ViewBag.Data)
+                                    {
+                                        if (item.IsDisable == false)
+                                        {
+                                            <tr>
+                                                <td>@item.News1</td>
+                                                <td class="text-center">
+                                                    <button onclick="NewsOpen('@item.NewsId')" class="btn btn-simple btn-warning btn-icon " title="Edit New" @*data-toggle="modal" data-target="#Editmodal"*@><i class="material-icons">dvr</i></button>
+                                                    <button title="Remove New" onclick="RemoveNews('@item.NewsId')" class="btn btn-simple btn-danger btn-icon"><i class="material-icons">close</i></button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- end content-->
+                </div>
+                <!--  end card  -->
+            </div>
+            <!-- end col-md-12 -->
+        </div>
+        <!-- end row -->
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    function RemoveNews(currentId) {
+        swal({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this imaginary file!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it',
+            confirmButtonClass: "btn btn-success",
+            cancelButtonClass: "btn btn-danger",
+            buttonsStyling: false
+        }).then(function () {
+            $.ajax({
+                type: "Get",
+                url: '@Url.Action("RemoveNews", "News")',
+                data: { id: currentId },
+                success: function (data) {
+                    swal({
+                        title: 'Deleted!',
+                        text: 'Your imaginary file has been deleted.',
+                        type: 'success',
+                        confirmButtonClass: "btn btn-success",
+                        buttonsStyling: false
+                    }).then(function () {
+                        window.location.replace("@Url.Action("ManageNews", "News")");
+                    }).catch(swal.noop)
+                }
+            })
+        }, function (dismiss) {
+            // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+            if (dismiss === 'cancel') {
+                swal({
+                    title: 'Cancelled',
+                    text: 'Your imaginary file is safe :)',
+                    type: 'error',
+                    confirmButtonClass: "btn btn-info",
+                    buttonsStyling: false,
+
+                }).catch(swal.noop)
+            }
+        })
+    }
+</script>
+
+<script type="text/javascript">
+    function ClearData() {
+
+        $('#NewsId').remove();
+        $('#newsname').val("");
+        $('#btnclear').hide();
+    }
+</script>
+
+<script type="text/javascript">
+    function NewsOpen(currentId) {
+        $.ajax({
+            type: "Get",
+            url: '@Url.Action("GetNews", "News")',
+            data: { id: currentId },
+            success: function (data) {
+                $('#Preview').html(data);
+                $('#newsname').val(data.Newsname);
+                $('#btnclear').show();
+                if ($('#NewsId').length) {
+                    $('#NewsId').val(data.NewsId);
+                } else {
+                    $('#Newsform').append('<input type="hidden" id="NewsId" name="NewsId">');
+                    $('#NewsId').val(data.NewsId);
+                }
+            }
+        })
+    }
+</script>

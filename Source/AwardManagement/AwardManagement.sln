@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwardManagement.Admin", "AwardManagement.Admin\AwardManagement.Admin.csproj", "{C2B35DD6-8887-4712-8947-EF2176419D67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwardManagement.Admin.Tests", "AwardManagement.Admin.Tests\AwardManagement.Admin.Tests.csproj", "{D5CF537A-2EC1-4EBB-94A0-8E0E2474F44E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwardManagment.WebApi", "AwardManagment.WebApi\AwardManagment.WebApi.csproj", "{0DA9083D-41C6-4752-AB2D-F27E7E620188}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwardManagment.WebApi.Tests", "AwardManagment.WebApi.Tests\AwardManagment.WebApi.Tests.csproj", "{149DC941-394A-42CA-88E7-44A2A394BCE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwardManagment.FrontEnd", "AwardManagment.FrontEnd\AwardManagment.FrontEnd.csproj", "{4BDEED8B-B3A4-4ACF-8B89-A312DF22D075}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwardManagement.Data", "AwardManagment.Data\AwardManagement.Data.csproj", "{559D2BE6-CE6D-4089-924E-79DFA73AD80A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwardManagement.BusinessObjects", "AwardManagment.BusinessObjects\AwardManagement.BusinessObjects.csproj", "{D9077444-548C-46DA-8C20-B9FB24B2AD67}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2B35DD6-8887-4712-8947-EF2176419D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2B35DD6-8887-4712-8947-EF2176419D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2B35DD6-8887-4712-8947-EF2176419D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2B35DD6-8887-4712-8947-EF2176419D67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5CF537A-2EC1-4EBB-94A0-8E0E2474F44E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5CF537A-2EC1-4EBB-94A0-8E0E2474F44E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5CF537A-2EC1-4EBB-94A0-8E0E2474F44E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5CF537A-2EC1-4EBB-94A0-8E0E2474F44E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DA9083D-41C6-4752-AB2D-F27E7E620188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DA9083D-41C6-4752-AB2D-F27E7E620188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DA9083D-41C6-4752-AB2D-F27E7E620188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DA9083D-41C6-4752-AB2D-F27E7E620188}.Release|Any CPU.Build.0 = Release|Any CPU
+		{149DC941-394A-42CA-88E7-44A2A394BCE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{149DC941-394A-42CA-88E7-44A2A394BCE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{149DC941-394A-42CA-88E7-44A2A394BCE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{149DC941-394A-42CA-88E7-44A2A394BCE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BDEED8B-B3A4-4ACF-8B89-A312DF22D075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BDEED8B-B3A4-4ACF-8B89-A312DF22D075}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BDEED8B-B3A4-4ACF-8B89-A312DF22D075}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BDEED8B-B3A4-4ACF-8B89-A312DF22D075}.Release|Any CPU.Build.0 = Release|Any CPU
+		{559D2BE6-CE6D-4089-924E-79DFA73AD80A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{559D2BE6-CE6D-4089-924E-79DFA73AD80A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{559D2BE6-CE6D-4089-924E-79DFA73AD80A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{559D2BE6-CE6D-4089-924E-79DFA73AD80A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9077444-548C-46DA-8C20-B9FB24B2AD67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9077444-548C-46DA-8C20-B9FB24B2AD67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9077444-548C-46DA-8C20-B9FB24B2AD67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9077444-548C-46DA-8C20-B9FB24B2AD67}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://gtltfs2015:8080/tfs/gtltfsteamsites
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = AwardManagement.Admin.Tests\\AwardManagement.Admin.Tests.csproj
+		SccProjectName1 = AwardManagement.Admin.Tests
+		SccLocalPath1 = AwardManagement.Admin.Tests
+		SccProjectUniqueName2 = AwardManagement.Admin\\AwardManagement.Admin.csproj
+		SccProjectName2 = AwardManagement.Admin
+		SccLocalPath2 = AwardManagement.Admin
+		SccProjectUniqueName3 = AwardManagment.WebApi\\AwardManagment.WebApi.csproj
+		SccProjectName3 = AwardManagment.WebApi
+		SccLocalPath3 = AwardManagment.WebApi
+		SccProjectUniqueName4 = AwardManagment.WebApi.Tests\\AwardManagment.WebApi.Tests.csproj
+		SccProjectName4 = AwardManagment.WebApi.Tests
+		SccLocalPath4 = AwardManagment.WebApi.Tests
+		SccProjectUniqueName5 = AwardManagment.FrontEnd\\AwardManagment.FrontEnd.csproj
+		SccProjectName5 = AwardManagment.FrontEnd
+		SccLocalPath5 = AwardManagment.FrontEnd
+		SccProjectUniqueName6 = AwardManagment.BusinessObjects\\AwardManagement.BusinessObjects.csproj
+		SccProjectName6 = AwardManagment.BusinessObjects
+		SccLocalPath6 = AwardManagment.BusinessObjects
+		SccProjectUniqueName7 = AwardManagment.Data\\AwardManagement.Data.csproj
+		SccProjectName7 = AwardManagment.Data
+		SccLocalPath7 = AwardManagment.Data
+	EndGlobalSection
+EndGlobal

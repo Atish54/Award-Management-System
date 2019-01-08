@@ -1,0 +1,117 @@
+﻿@model AwardManagment.BusinessObjects.Model.BOUser
+@{
+    ViewBag.Title = "Manage Users";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-icon" data-background-color="purple">
+                <i class="material-icons">assignment</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title">Registerd users</h4>
+                <div class="toolbar">
+                    <!--        Here you can write extra buttons/actions for the toolbar              -->
+                </div>
+                <div class="material-datatables">
+                    <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Mobile No</th>
+                                <th>Gender</th>
+                                <th>DOJ</th>
+                                <th>DOB</th>
+                                <th>Designation</th>
+                                <th class="disabled-sorting text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Mobile No</th>
+                                <th>Gender</th>
+                                <th>DOB</th>
+                                <th>DOJ</th>
+                                <th>Designation</th>
+                                <th class="disabled-sorting text-right">Actions</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in ViewBag.Data)
+                            {
+                                if (item.IsDisable == false)
+                                {
+                                    <tr>
+                                        <td>@item.Name</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.Mobile</td>
+                                        <td>@item.Gender</td>
+                                        <td>@item.DOB.ToString("dd-MM-yyyy")</td>
+                                        <td>@item.DOJ.ToString("dd-MM-yyyy")</td>
+                                        <td>@item.Designation</td>
+                                        <td class="text-right">
+                                            <button onclick="UserOpen('@item.UserId')" class="btn btn-simple btn-warning btn-icon " title="Edit User" @*data-toggle="modal" data-target="#Editmodal"*@><i class="material-icons">dvr</i></button>
+                                            <button title="Remove User" onclick="RemoveUser('@item.UserId')" class="btn btn-simple btn-danger btn-icon"><i class="material-icons">close</i></button>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- end content-->
+        </div>
+        <!--  end card  -->
+    </div>
+    <!-- end col-md-12 -->
+</div>
+
+<script type="text/javascript">
+    function RemoveUser(currentId) {
+        swal({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this imaginary file!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it',
+            confirmButtonClass: "btn btn-success",
+            cancelButtonClass: "btn btn-danger",
+            buttonsStyling: false
+        }).then(function () {
+            $.ajax({
+                type: "Get",
+                url: '@Url.Action("RemoveUser", "Users")',
+                data: { id: currentId },
+                success: function (data) {
+                    swal({
+                        title: 'Deleted!',
+                        text: 'Your imaginary file has been deleted.',
+                        type: 'success',
+                        confirmButtonClass: "btn btn-success",
+                        buttonsStyling: false
+                    }).then(function () {
+                        window.location.replace("@Url.Action("ManageUsers", "Users")");
+                    }).catch(swal.noop)
+                }
+            })
+        }, function (dismiss) {
+            // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+            if (dismiss === 'cancel') {
+                swal({
+                    title: 'Cancelled',
+                    text: 'Your imaginary file is safe :)',
+                    type: 'error',
+                    confirmButtonClass: "btn btn-info",
+                    buttonsStyling: false,
+
+                }).catch(swal.noop)
+            }
+        })
+    }
+</script>

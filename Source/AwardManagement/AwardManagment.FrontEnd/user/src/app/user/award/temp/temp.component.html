@@ -1,0 +1,20 @@
+<div [formGroup]="queForm">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{QuId}}" aria-expanded="true" aria-controls="collapseOne">
+                    <h4 class="panel-title">
+                        {{Que}}
+                        <i class="material-icons">keyboard_arrow_down</i>
+                        <input type="hidden" formControlName="QueId"> 
+                    </h4>
+                </a>
+            </div>
+            <div id="collapse{{QuId}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <textarea class="form-control" formControlName="Answer"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

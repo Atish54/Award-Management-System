@@ -1,0 +1,131 @@
+﻿@model AwardManagment.BusinessObjects.Model.BOApplication
+
+@{
+    ViewBag.Title = "Manage Applications";
+}
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="purple">
+                        <i class="material-icons">search</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Category</h4>
+                        <div class="form-group">
+                            <select class="selectpicker" data-style="select-with-transition" title="Choose Category" data-size="7">
+                                <option disabled> Choose city</option>
+                                <option value="2">Paris </option>
+                                <option value="3">Bucharest</option>
+                                <option value="4">Rome</option>
+                                <option value="5">New York</option>
+                                <option value="6">Miami </option>
+                                <option value="7">Piatra Neamt</option>
+                                <option value="8">Paris </option>
+                                <option value="9">Bucharest</option>
+                                <option value="10">Rome</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="purple">
+                        <i class="material-icons">search</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Sub Category</h4>
+                        <div class="form-group">
+                            <select class="selectpicker" data-style="select-with-transition" title="Choose Sub Category" data-size="7">
+                                <option disabled> Choose city</option>
+                                <option value="2">Paris </option>
+                                <option value="3">Bucharest</option>
+                                <option value="4">Rome</option>
+                                <option value="5">New York</option>
+                                <option value="6">Miami </option>
+                                <option value="7">Piatra Neamt</option>
+ 
+                                                        </select>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="purple">
+                        <i class="material-icons">search</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Award</h4>
+                        <div class="form-group">
+                            <select class="selectpicker" data-style="select-with-transition" title="Choose Award " data-size="7">
+                                <option disabled> Choose city</option>
+                                <option value="2">Paris </option>
+                                <option value="3">Bucharest</option>
+                                <option value="4">Rome</option>
+                                <option value="5">New York</option>
+                                <option value="6">Miami </option>
+                                <option value="7">Piatra Neamt</option>
+                                <option value="8">Paris </option>
+                                <option value="9">Bucharest</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-simple btn-wd btn-lg">Let's Look it</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-icon" data-background-color="purple">
+                <i class="material-icons">assignment</i>
+            </div>
+            <div class="card-content">
+                <h4 class="card-title">Result</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped table-no-bordered table-hover" id="datatables">
+                        <thead>
+                            <tr>
+                                <th>Application ID</th>
+                                <th>Applicant Name</th>
+                                <th>Award Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Ram</td>
+                                        <td>HR</td>
+                                        
+                                        
+                                        <td class="td-actions text-left">
+                                            <button type="submit" class="btn btn-rose btn-simple btn-lg" onclick="window.location.href='ViewDetail'; "><i class="material-icons">description</i></button>
+                                            <button class="btn btn-simple btn-success">
+                                                <i class="material-icons">check</i>
+                                            </button>
+                                            <button class="btn btn-simple btn-danger">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                              
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+

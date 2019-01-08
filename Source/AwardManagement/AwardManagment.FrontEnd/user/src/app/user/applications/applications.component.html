@@ -1,0 +1,69 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="purple">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">DataTables.net</h4>
+                        <div class="toolbar">
+                            <!--        Here you can write extra buttons/actions for the toolbar              -->
+                        </div>
+                        <div class="material-datatables table-responsive">
+                            <table id="datatables1" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                <thead>
+                                    <tr>
+                                      <th>Award Name</th>
+                                      <th>Category</th>
+                                      <th>Sub Category</th>
+                                      <th>Applied Date</th>
+                                      <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    
+                                    <tr *ngFor="let app of appdata">
+                                            
+                                        <td >{{app.Award.AwardName}}</td>
+                                        <td>{{app.Award.SubCategory.Category.Category1}}</td>
+                                        <td>{{app.Award.SubCategory.SubCategory1}}</td>
+                                        <td>{{app.AppliedDate}}</td>
+                                        <td [ngSwitch]="app.Stage">
+                                            <span *ngSwitchCase="1" class="label label-info">Intial</span>
+                                            <span *ngSwitchCase="2" class="label label-primary">Assesor</span>
+                                            <span *ngSwitchCase="3" class="label label-warning">Jury</span>
+                                            <span *ngSwitchCase="4" class="label label-danger">Chair-Man</span>
+                                            <span *ngSwitchCase="5" class="label label-success">Winner</span>
+                                        </td>
+                                     </tr>  
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Award Name</th>
+                                        <th>Category</th>
+                                        <th>Sub Category</th>
+                                        <th>Applied Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- end content-->
+                </div>
+                <!--  end card  -->
+            </div>
+            <!-- end col-md-12 -->
+        </div>
+        <!-- end row -->
+    </div>
+</div>
+<!-- <table class="table table-sm table-hover">
+    <tr *ngFor="let employee of _applicationService.applist">
+      <td>{{employee.AppId}}</td>
+      <td>{{employee.AppliedDate}}</td>
+    </tr> -->
+  <!-- </table> -->

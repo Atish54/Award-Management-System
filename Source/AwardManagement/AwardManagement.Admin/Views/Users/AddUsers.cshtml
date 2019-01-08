@@ -1,0 +1,157 @@
+﻿@model AwardManagment.BusinessObjects.Model.BOUser
+@{
+    ViewBag.Title = "Add Users";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    @{Html.EnableClientValidation();}
+                    @{Html.EnableUnobtrusiveJavaScript();}
+                    @using (Html.BeginForm("AddUsers", "Users", FormMethod.Post, new { @class = "form-horizontal" }))
+                    {
+                        <div class="card-header card-header-text" data-background-color="purple">
+                            <h4 class="card-title">Employee Register Form</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <label class="col-sm-3 label-on-left">User Name</label>
+                                <div class="col-sm-8">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label"></label>
+                                        @Html.EditorFor(U => U.Name, new { htmlAttributes = new { @class = "form-control", @name = "username", @id = "username", type = "text" , required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.Name)
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-3 label-on-left">Email Address</label>
+                                <div class="col-sm-8">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label"></label>
+                                        @Html.EditorFor(U => U.Email, new { htmlAttributes = new { @class = "form-control", @name = "useremail", @id = "useremail", type = "email", required = "required", onfocusout= "EmailCheck()" } })
+                                        @Html.ValidationMessageFor(model => model.Email)
+                                        @*<input class="form-control" type="email" name="email" email="true" />*@
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-3 label-on-left">Password</label>
+                                <div class="col-sm-8">
+                                    <div class="form-group label-floating">
+                                        @Html.EditorFor(U => U.Password, new { htmlAttributes = new { @class = "form-control", @name = "userpass", @id = "userpass", type = "password", required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.Password)
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-3 label-on-left">Mobile No</label>
+                                <div class="col-sm-8">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label"></label>
+                                        @*<input class="form-control" type="text" placeholder="9874563210" name="mobileno" number="true" />*@
+                                        @Html.EditorFor(U => U.Mobile, new { htmlAttributes = new { @class = "form-control", @name = "usermobile", @id = "usermobile", type = "number", placeholder = "9874563210", required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.Mobile)
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <label class="col-sm-3 label-on-left">Gender</label>
+                                <div class="col-sm-8 checkbox-radios">
+                                    <div class="radio radio-inline">
+                                        <label>
+                                            
+                                            <input type="radio" name="userGender" id="userGender" value="true" checked>Male
+                                        </label>
+                                        &nbsp;
+                                        <label>
+                                            
+                                            <input type="radio" name="userGender" id="userGender" value="false"> Female
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <label class="col-sm-3 label-on-left">DOJ</label>
+                                <div class="col-sm-8 checkbox-radios">
+                                    <div class="form-group">
+                                        @*<input type="date" class="form-control datepicker" />*@
+                                        @Html.EditorFor(U => U.DOJ, new { htmlAttributes = new { @class = "form-control datepicker", @name = "userdojdate", @id = "userdojdate", type = "date", required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.DOJ)
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row">
+                                <label class="col-sm-3 label-on-left">DOB</label>
+                                <div class="col-sm-8 checkbox-radios">
+                                    <div class="form-group">
+                                        @*<input type="date" class="form-control datepicker" required />*@
+                                        @Html.EditorFor(U => U.DOB, new { htmlAttributes = new { @class = "form-control datepicker", @name = "userdobdate", @id = "userdobdate", type = "date", required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.DOB)
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <label class="col-sm-3 label-on-left">Designation</label>
+                                <div class="col-sm-8">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label"></label>
+                                        @Html.EditorFor(U => U.Designation, new { htmlAttributes = new { @class = "form-control", @name = "userdesignation", @id = "userdesignation", required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.Designation)
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="card-footer text-right">
+                            <button type="submit" class="btn btn-primary btn-fill">Submit <i class="material-icons">send</i></button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divLoading" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color: #666666; z-index: 30001; opacity: .8; filter: alpha(opacity=70);display:none">
+    <p style="position: absolute; top: 30%; left: 45%; color: White;">
+        <img src="../../assets/img/loding.gif">
+    </p>
+</div>
+
+@*<script>
+function myFunction() {
+    var email = document.getElementById("useremail");
+    alert(x.value);
+}
+</script>*@
+    
+
+<script type="text/javascript">
+    function EmailCheck() {
+        var email = document.getElementById("useremail");
+        jQuery.ajax({
+            URl: '@Url.Action("CheckEmail", "Users")',
+            data: { email: email },
+            type: "Get",
+            success: function (data) {
+                var email = data;
+                alert(email.value);
+                // document.getElementById('').appendChild(input);
+            }
+        })
+    }
+</script>

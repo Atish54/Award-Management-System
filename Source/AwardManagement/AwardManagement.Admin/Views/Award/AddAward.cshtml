@@ -1,0 +1,422 @@
+﻿@model AwardManagment.BusinessObjects.Model.BOAward
+@{
+    ViewBag.Title = "Add Awards";
+}
+
+@if (ViewBag.UpdateSuccess == true)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Done",
+                text: "Updated Sucessfully!",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+                type: "success"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+    </script>
+}
+else if (ViewBag.UpdateSuccess == false)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Done",
+                text: "Update Data Unsucessfully!",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+                type: "success"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+    </script>
+}
+else if (ViewBag.InsertSuccess == true)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Done",
+                text: "Inserted Sucessfully!",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+                type: "success"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+    </script>
+}
+else if (ViewBag.InsertSuccess == false)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Done",
+                text: "Inserted Unsucessfully!",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+                type: "success"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+    </script>
+}
+else if (ViewBag.DataNull == true)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Information!",
+                text: "Please Enter Valid Data",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-info"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+    </script>
+}
+<div class="col-sm-8 col-sm-offset-2">
+    <!--      Wizard container        -->
+    <div class="wizard-container">
+        <div class="card wizard-card" data-color="purple" id="wizardProfile">
+          @using (Html.BeginForm("InsertAward", "Award", FormMethod.Post, new { @class = "form-horizontal", }))
+          {
+                <!-- You can switch " data-color="purple" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
+                <div class="wizard-header">
+                    <h3 class="wizard-title">
+                        Add Award
+                    </h3>
+
+                </div>
+                <div class="wizard-navigation">
+                    <ul>
+                        <li>
+                            <a href="#AwardDetail" data-toggle="tab">Award Detail</a>
+                        </li>
+                        <li>
+                            <a href="#Question" data-toggle="tab">Question</a>
+                        </li>
+                        <li>
+                            <a href="#Finish" data-toggle="tab">Finish</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+
+                 
+                    <div class="tab-pane" id="AwardDetail">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-1">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        &nbsp;&nbsp;<i class="fa fa-trophy">&nbsp;</i>
+                                    </span>
+                                    <div class="form-group label-floating">
+                                        <div class="col-sm-push-11">
+                                            <label class="control-label">
+                                                Award name
+                                                <small>(required)</small>
+                                            </label>
+                                            @Html.EditorFor(A => A.AwardName, new { htmlAttributes = new { @class = "form-control", @name = "subcatename", @id = "subcatename", required = "required" } })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                @*<div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-trophy"></i>
+                                        </span>
+                                        <div class="form-group label-floating">
+                                            <div class="col-sm-push-11">
+                                                <label class="control-label">
+                                                    Short Description
+                                                    <small>(required)</small>
+                                                </label>
+                                                <input name="lastname" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">view_list</i>
+                                    </span>
+                                    <div class="form-group label-floating">
+                                        <div class="col-sm-push-11">
+                                            <select class="selectpicker" id="catDrop" name="catDrop" required = "required" onchange="GetSubCateData(this.value);" data-style="select-with-transition" title="Single Select Category" data-size="5">
+                                                <option disabled selected>Choose Category</option>
+                                                @foreach (var item in ViewBag.CateData)
+                                                {
+                                                    if (item.IsDisable == false)
+                                                    {
+                                                        <option value="@item.CateId"> @item.Category1</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">list</i>
+                                    </span>
+                                    <div class="form-group label-floating">
+                                        <div class="col-sm-push-11">
+                                            <select class="selectpicker" name="subcatDrop" required = "required" data-style="select-with-transition" id="SubDropDown" title="Single Select Sub Category" data-size="5">
+                                                <option disabled selected>Sub Category</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">date_range</i>
+                                    </span>
+                                    <div class="col-sm-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">
+                                                From Date(mm-dd-yyyy)
+                                            </label>
+                                            @Html.EditorFor(A => A.StartDate, new { htmlAttributes = new { @class = "form-control", Type = "date", required = "required", @min = @DateTime.Now.ToString("yyyy-MM-dd"), @max = @DateTime.Now.AddMonths(3).ToString("yyyy-MM-dd"), @Value = @DateTime.Now.ToString("yyyy-MM-dd") } })
+                                            @*<input type="date" class="form-control datepicker" value="@DateTime.Now.ToString("yyyy-MM-dd")" />*@
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">
+                                                To Date(mm-dd-yyyy)
+                                            </label>
+                                            @Html.EditorFor(A => A.EndDate, new { htmlAttributes = new { @class = "form-control", Type = "date", required = "required", @min = @DateTime.Now.ToString("yyyy-MM-dd"), @max = @DateTime.Now.AddMonths(3).ToString("yyyy-MM-dd"), @Value = @DateTime.Now.ToString("yyyy-MM-dd") } })
+                                            @*<input type="date" class="form-control datepicker" value="@DateTime.Now.ToString("yyyy-MM-dd")" />*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">short_text</i>
+                                    </span>
+                                    <div class="form-group label-floating">
+                                        <div class="col-sm-push-11">
+                                            <label class="control-label">
+                                                Short Description
+                                                <small>(required)</small>
+                                            </label>
+                                            @Html.EditorFor(A => A.ShortDescription, new { htmlAttributes = new { @class = "form-control", Type = "text", required = "required" } })
+                                            @*<input name="lastname" type="text" class="form-control">*@
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="material-icons">description</i>
+                                    </span>
+                                    <div class="form-group label-floating">
+                                        <div class="col-sm-push-11">
+                                            <label class="control-label">
+                                                Long Description
+                                                <small>(required)</small>
+                                            </label>
+                                            <br />
+                                            @*<textarea class="form-control"></textarea>*@
+                                            @Html.EditorFor(A => A.LongDescription, new { htmlAttributes = new { @class = "form-control", Type = "text", required = "required" } })
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @* Quection Part *@
+                    <div class="tab-pane" id="Question">
+
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-push-4">
+                                <h5><strong>Select Quection for this Award</strong></h5>
+                            </div>
+                            <div class="col-sm-10 col-sm-push-2">
+                                <div class="input-group ">
+                                    <div class="form-group label-floating">
+                                        <div class="col-sm-10">
+                                            <table class="table" style="width:500px !important">
+                                                <tbody>
+                                                    @foreach (var item in ViewBag.QueData)
+                                                    {
+                                                        if (item.IsDisable == false)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="checkbox" >
+                                                                        <label>
+                                                                            <input type="checkbox" required = "required" name="optionsCheckboxes" value="@item.QueId">
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                                <td style="width:100%!important">@item.Question1</td>
+
+                                                            </tr>
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*  Finish Tab *@
+                    <div class="tab-pane" id="Finish">
+
+                        @*  Second part *@
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-push-2">
+                                <div class="col-sm-12 col-sm-push-3">
+                                    <h5><strong>Select Assesor , Jury & Chaiman</strong></h5>
+                                </div>
+                                <table class="table" style="border:none">
+                                    <tbody>
+                                        <tr>
+                                            <td style="border:0px">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <label>Select Assesor</label>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="border:0px">
+                                                <select class="selectpicker" required = "required" id="assesorDrop" name="assesorDrop" data-style="select-with-transition" title="Single Select" data-size="5">
+                                                    <option disabled selected >Select Assesor</option>
+                                                    @foreach (var item in ViewBag.Userlst)
+                                                    {
+                                                        if (item.IsDisable == false)
+                                                        {
+                                                            <option value="@item.UserId"> @item.Name</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="border:0px">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <label>Select Jury</label>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="border:0px">
+                                                <select class="selectpicker" required = "required" id="juryDrop" name="juryDrop" data-style="select-with-transition" title="Single Select" data-size="5">
+                                                    <option disabled selected>Select Jury</option>
+                                                    @foreach (var item in ViewBag.Userlst)
+                                                    {
+                                                        if (item.IsDisable == false)
+                                                        {
+                                                            <option value="@item.UserId"> @item.Name</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="border:0px">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <label>Select Chairman</label>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="border:0px">
+                                                <select class="selectpicker" required = "required" id="chairmanDrop" name="chairmanDrop" data-style="select-with-transition" title="Single Select" data-size="5">
+                                                    <option disabled selected>Select Chairman</option>
+                                                    @foreach (var item in ViewBag.Userlst)
+                                                    {
+                                                        if (item.IsDisable == false)
+                                                        {
+                                                            <option value="@item.UserId"> @item.Name</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    @* End Finish Tab *@
+                   
+                </div>
+                <div class="wizard-footer">
+                    <div class="pull-right">
+                        <button type='button' class='btn btn-next btn-fill btn-primary btn-wd' name='next'>Next<i class="material-icons">keyboard_arrow_right</i></button>
+                        <input type='submit' class='btn btn-finish btn-fill btn-primary btn-wd' name='finish' value='Finish' />
+                    </div>
+                    <div class="pull-left">
+                        <button type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous'><i class="material-icons">keyboard_arrow_left</i>Previous </button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+          }
+        </div>
+
+    </div>
+    <!-- wizard container -->
+</div>
+
+<div id="divLoading" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color: #666666; z-index: 30001; opacity: .8; filter: alpha(opacity=70);display:none">
+    <p style="position: absolute; top: 30%; left: 45%; color: White;">
+        <img src="../../assets/img/loding.gif">
+    </p>
+</div>
+
+<script type="text/javascript">
+
+    // This Function For Clear
+    function GetSubCateData(catid) {
+        $("#divLoading").show();
+        $.ajax({
+            type: "Get",
+            url: '@Url.Action("GetSubCateData", "Award")',
+            data: { id: catid },
+            success: function (data) {
+
+                $("#SubDropDown").html("");
+                data = $.parseJSON(data);
+                $("#SubDropDown").append(" <option disabled selected>Sub Category</option>")
+                $.each(data, function (i, city)
+                { $("#SubDropDown").append($('<option></option>').val(city.SubCateId).html(city.SubCategory1)) })
+                $('.selectpicker').selectpicker('refresh');
+                $("#divLoading").hide();
+            },
+            error: function () { alert("Whooaaa! Something went wrong..") },
+        });
+    }
+</script>

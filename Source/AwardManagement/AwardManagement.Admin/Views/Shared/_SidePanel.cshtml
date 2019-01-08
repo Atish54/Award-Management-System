@@ -1,0 +1,196 @@
+﻿@using AwardManagement.Admin.App_Start
+
+<div class="sidebar" data-active-color="purple" data-background-color="black" data-image="../assets/img/sidebar-1.jpg">
+    <!--
+        Tip 1: You can change the color of active element of the sidebar using: data-active-color="purple | blue | green | orange | red | rose"
+        Tip 2: you can also add an image using data-image tag
+        Tip 3: you can change the color of the sidebar with data-background-color="white | black"
+    -->
+    <div class="logo">
+        <a href="#" class="simple-text logo-mini">
+            AM
+        </a>
+        <a href="#" class="simple-text logo-normal">
+            Award Managment
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <div class="user">
+            <div class="photo">
+                <img src="../assets/img/faces/avatar.jpg" />
+            </div>
+            <div class="info">
+                <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+                    <span>
+                       Hi ! @Session["UserName"]
+                        <b class="caret"></b>
+                    </span>
+                </a>
+                <div class="clearfix"></div>
+                @*@Html.IsSelected(actions: "AdminProfile", controllers: "AdminProfile")*@
+                <div class="@Html.DropDownDiv(controllers: "AdminProfile")" id="collapseExample">
+                    <ul class="nav">
+                        <li class="@Html.IsSelected(actions: "AdminProfile")">
+                            <a href="@Url.Action("AdminProfile", "AdminProfile")">
+                                <span class="sidebar-mini"> MP </span>
+                                <span class="sidebar-normal"> My Profile </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            @*@Url.Action("Logout", "Login")*@
+                            <a href="@Url.Action("Index", "Logout")">
+                                <span class="sidebar-mini"> LO </span>
+                                <span class="sidebar-normal"> Logout </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <ul class="nav" id="myTab">
+
+            <li class="@Html.IsSelected(actions: "Index", controllers: "Dashboard")">
+                <a href="@Url.Action("Index", "Dashboard")">
+                    <i class="material-icons">dashboard</i>
+                    <p> Dashboard </p>
+                </a>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#Award">
+                    <i class="fa fa-trophy"></i>
+                    <p>
+                        Awards
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="@Html.DropDownDiv(controllers: "Award") @Html.DropDownDiv(controllers: "Question")" id="Award">
+                    <ul class="nav">
+                        <li class="@Html.IsSelected(actions: "AddAward", controllers: "Award")">
+                            <a href="@Url.Action("AddAward", "Award")">
+                                <span class="sidebar-mini"> AA </span>
+                                <span class="sidebar-normal"> Add Awards </span>
+                            </a>
+                        </li>
+
+                        <li class="@Html.IsSelected(actions: "ManageQuection", controllers: "Question")">
+                            <a href="@Url.Action("ManageQuection", "Question")">
+                                <span class="sidebar-mini"> QS </span>
+                                <span class="sidebar-normal"> Questions </span>
+                            </a>
+                        </li>
+
+                        <li class="@Html.IsSelected(actions: "ManageAward", controllers: "Award")">
+                            <a href="@Url.Action("ManageAward", "Award")">
+                                <span class="sidebar-mini"> MA </span>
+                                <span class="sidebar-normal"> Manage Awards </span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#Users">
+                    <i class="material-icons">perm_identity</i>
+                    <p>
+                        Users
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="@Html.DropDownDiv(controllers: "Users")" id="Users">
+                    <ul class="nav">
+                        <li class="@Html.IsSelected(actions: "AddUsers", controllers: "Users")">
+                            <a href="@Url.Action("AddUsers", "Users")">
+                                <span class="sidebar-mini"> AU </span>
+                                <span class="sidebar-normal"> Add User </span>
+                            </a>
+                        </li>
+                        <li class="@Html.IsSelected(actions: "ManageUsers", controllers: "Users")">
+                            <a href="@Url.Action("ManageUsers", "Users")">
+                                <span class="sidebar-mini"> MU </span>
+                                <span class="sidebar-normal"> Manage Users </span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#Categories">
+                    <i class="fa fa-folder"></i>
+                    <p>
+                        Categories
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="@Html.DropDownDiv(controllers: "Category") @Html.DropDownDiv(controllers: "SubCategory")" id="Categories">
+                    <ul class="nav">
+                        <li class="@Html.IsSelected(actions: "ManageCategory", controllers: "Category")">
+                            <a href="@Url.Action("ManageCategory","Category")">
+                                <span class="sidebar-mini"> MC </span>
+                                <span class="sidebar-normal"> Manage Categories </span>
+                            </a>
+                        </li>
+                        <li class="@Html.IsSelected(actions: "ManageSubCategory", controllers: "SubCategory")">
+                            <a href="@Url.Action("ManageSubCategory","SubCategory")">
+                                <span class="sidebar-mini"> MSC </span>
+                                <span class="sidebar-normal"> Manage Sub-Categories </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <li>
+                <a data-toggle="collapse" href="#News">
+                    <i class="material-icons">inbox</i>
+                    <p>
+                        News
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="@Html.DropDownDiv(controllers: "News") @Html.DropDownDiv(controllers: "SubCategory")" id="News">
+                    <ul class="nav">
+                        @*<li class="@Html.IsSelected(actions: "AddNews", controllers: "News")">
+                                <a href="@Url.Action("AddNews","News")">
+                                    <span class="sidebar-mini"> AN </span>
+                                    <span class="sidebar-normal"> Add News </span>
+                                </a>
+                            </li>*@
+                        <li class="@Html.IsSelected(actions: "ManageNews", controllers: "News")">
+                            <a href="@Url.Action("ManageNews","News")">
+                                <span class="sidebar-mini"> MN </span>
+                                <span class="sidebar-normal"> Manage News </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a data-toggle="collapse" href="#Applications">
+                    <i class="material-icons">settings_applications</i>
+                    <p>
+                        Applications
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="@Html.DropDownDiv(controllers: "Application")" id="Applications">
+                    <ul class="nav">
+                        <li class="@Html.IsSelected(actions: "ApplicationManage")">
+                            <a href="@Url.Action("ApplicationManage", "Application")">
+                                <span class="sidebar-mini"> MA </span>
+                                <span class="sidebar-normal"> Manage Applications  </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

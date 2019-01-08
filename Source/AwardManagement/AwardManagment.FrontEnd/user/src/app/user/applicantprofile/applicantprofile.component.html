@@ -1,0 +1,79 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <form #myForm (ngSubmit)="changeImage(myForm.value)">
+                <div class="col-md-5 col-md-offset-3">
+                    <div class="card card-profile" style="text-align: left">
+                        <div class="card-avatar">
+                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                <div class="fileinput-new thumbnail img-circle" style="max-width: 128px;height: 130px;">
+                                    <label for="fileToUpload">
+                                        <img src="../assets/img/default-avatar.png" style="height:130px;width:100%;cursor:pointer;" alt="placeholder" />
+                                    </label>
+                                </div>
+                                <input type="File" name="fileToUpload" id="fileToUpload" style="display:none" accept="image/*">
+                                <label for="fileToUpload">
+                                    <div class="fileinput-preview fileinput-exists thumbnail img-responsive" style="height: 129px;width: 131px;"></div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="card-title">Edit Profile -
+                                <small class="category">Complete your profile</small>
+                            </h4>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        <!-- <label class="control-label">Email</label>  -->
+                                        <input type="email" class="form-control" placeholder="{{user.Email}}" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        <input type="text" class="form-control" value="{{user.Name}}" placeholder="Name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        <label class="label-control">DOB</label>
+                                        <!-- <input type="date" class="form-control datepicker" required /> -->
+                                        <input type="text" class="form-control datepicker" value="{{user.DOB|date}}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        <label class="label-control">DOJ</label>
+                                        <!-- <input type="text" class="form-control datepicker" value="10/10/2016" /> -->
+                                        <input type="text" class="form-control datepicker" value="{{user.DOJ|date}}" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        <label class="label-control">Mobile No</label>
+                                        <input type="text" class="form-control" value="{{user.Mobile}}" placeholder="Mobile No">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- photo -->
+</div>

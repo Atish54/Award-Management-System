@@ -1,0 +1,14 @@
+D:\GTLTFSTeamSites\Award_Management\Source\AwardManagement\AwardManagment.BusinessObjects\bin\Debug\AwardManagment.BusinessObjects.dll.config
+D:\GTLTFSTeamSites\Award_Management\Source\AwardManagement\AwardManagment.BusinessObjects\bin\Debug\AwardManagment.BusinessObjects.dll
+D:\GTLTFSTeamSites\Award_Management\Source\AwardManagement\AwardManagment.BusinessObjects\bin\Debug\AwardManagment.BusinessObjects.pdb
+D:\GTLTFSTeamSites\Award_Management\Source\AwardManagement\AwardManagment.BusinessObjects\obj\Debug\AwardManagment.BusinessObjects.dll
+D:\GTLTFSTeamSites\Award_Management\Source\AwardManagement\AwardManagment.BusinessObjects\obj\Debug\AwardManagment.BusinessObjects.pdb
+D:\GTLTFSTeamSites\Award_Management\Source\AwardManagement\AwardManagment.BusinessObjects\obj\Debug\AwardManagement.BusinessObjects.csprojResolveAssemblyReference.cache
+D:\GTLTFSTeamSites\Award_Management\Source\AwardManagement\AwardManagment.BusinessObjects\bin\Debug\mscorlib.dll
+D:\GTLTFSTeamSites\Award_Management\Source\AwardManagement\AwardManagment.BusinessObjects\bin\Debug\System.Net.Http.dll
+D:\GTLTFSTeamSites\Award_Management\Source\AwardManagement\AwardManagment.BusinessObjects\bin\Debug\System.Net.Http.xml
+D:\GTLTFSTeamSites\Award_Management\Source\AwardManagement\AwardManagment.BusinessObjects\bin\Debug\normidna.nlp
+D:\GTLTFSTeamSites\Award_Management\Source\AwardManagement\AwardManagment.BusinessObjects\bin\Debug\normnfc.nlp
+D:\GTLTFSTeamSites\Award_Management\Source\AwardManagement\AwardManagment.BusinessObjects\bin\Debug\normnfd.nlp
+D:\GTLTFSTeamSites\Award_Management\Source\AwardManagement\AwardManagment.BusinessObjects\bin\Debug\normnfkc.nlp
+D:\GTLTFSTeamSites\Award_Management\Source\AwardManagement\AwardManagment.BusinessObjects\bin\Debug\normnfkd.nlp

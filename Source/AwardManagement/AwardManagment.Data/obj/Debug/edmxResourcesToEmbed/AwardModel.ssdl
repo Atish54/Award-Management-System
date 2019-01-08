@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AwardDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Application">
+    <Key>
+      <PropertyRef Name="AppId" />
+    </Key>
+    <Property Name="AppId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AppliedDate" Type="date" Nullable="false" />
+    <Property Name="Stage" Type="int" Nullable="false" />
+    <Property Name="AwdId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="isRejected" Type="bit" />
+  </EntityType>
+  <EntityType Name="ApplicationDetails">
+    <Key>
+      <PropertyRef Name="AppId" />
+      <PropertyRef Name="QueId" />
+    </Key>
+    <Property Name="AppId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="QueId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Answer" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Award">
+    <Key>
+      <PropertyRef Name="AwdId" />
+    </Key>
+    <Property Name="AwdId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SubCateId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AwardName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ShortDescription" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="LongDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" Nullable="false" />
+    <Property Name="DateCreated" Type="date" Nullable="false" />
+    <Property Name="IsDisable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AwardQuestions">
+    <Key>
+      <PropertyRef Name="QueId" />
+      <PropertyRef Name="AwdId" />
+    </Key>
+    <Property Name="QueId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AwdId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="isDisable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CateId" />
+    </Key>
+    <Property Name="CateId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsDisable" Type="bit" Nullable="false" />
+    <Property Name="LongDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="ShortDescription" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="NewsId" />
+    </Key>
+    <Property Name="NewsId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="news" Type="varchar(max)" Nullable="false" />
+    <Property Name="IsDisable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="NotificationID" />
+    </Key>
+    <Property Name="NotificationID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsCompleted" Type="bit" Nullable="false" />
+    <Property Name="Details" Type="varchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="QueId" />
+    </Key>
+    <Property Name="QueId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Question" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="IsDisable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsDisable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubCategory">
+    <Key>
+      <PropertyRef Name="SubCateId" />
+    </Key>
+    <Property Name="SubCateId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SubCategory" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CateId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsDisable" Type="bit" Nullable="false" />
+    <Property Name="LongDescription" Type="varchar(max)" Nullable="false" />
+    <Property Name="ShortDescription" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Gender" Type="bit" Nullable="false" />
+    <Property Name="DOB" Type="date" Nullable="false" />
+    <Property Name="DOJ" Type="date" Nullable="false" />
+    <Property Name="Designation" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Image" Type="varchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDisable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRating">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="AppId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Rating" Type="int" Nullable="false" />
+    <Property Name="Reason" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsDisable" Type="bit" Nullable="false" />
+    <Property Name="AwardId" Type="uniqueidentifier" />
+  </EntityType>
+  <Association Name="FK_application_applicationdetails">
+    <End Role="Application" Type="Self.Application" Multiplicity="1" />
+    <End Role="ApplicationDetails" Type="Self.ApplicationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Application">
+        <PropertyRef Name="AppId" />
+      </Principal>
+      <Dependent Role="ApplicationDetails">
+        <PropertyRef Name="AppId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_application_userrating">
+    <End Role="Application" Type="Self.Application" Multiplicity="1" />
+    <End Role="UserRating" Type="Self.UserRating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Application">
+        <PropertyRef Name="AppId" />
+      </Principal>
+      <Dependent Role="UserRating">
+        <PropertyRef Name="AppId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_award_application">
+    <End Role="Award" Type="Self.Award" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Award">
+        <PropertyRef Name="AwdId" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="AwdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_award_awardquestions">
+    <End Role="Award" Type="Self.Award" Multiplicity="1" />
+    <End Role="AwardQuestions" Type="Self.AwardQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Award">
+        <PropertyRef Name="AwdId" />
+      </Principal>
+      <Dependent Role="AwardQuestions">
+        <PropertyRef Name="AwdId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_award_subcate">
+    <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="1" />
+    <End Role="Award" Type="Self.Award" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubCategory">
+        <PropertyRef Name="SubCateId" />
+      </Principal>
+      <Dependent Role="Award">
+        <PropertyRef Name="SubCateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_award_userrole">
+    <End Role="Award" Type="Self.Award" Multiplicity="0..1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Award">
+        <PropertyRef Name="AwdId" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="AwardId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cate_subcate">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CateId" />
+      </Principal>
+      <Dependent Role="SubCategory">
+        <PropertyRef Name="CateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_questions_applicationdetails">
+    <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+    <End Role="ApplicationDetails" Type="Self.ApplicationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="QueId" />
+      </Principal>
+      <Dependent Role="ApplicationDetails">
+        <PropertyRef Name="QueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_questions_awardquestions">
+    <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+    <End Role="AwardQuestions" Type="Self.AwardQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="QueId" />
+      </Principal>
+      <Dependent Role="AwardQuestions">
+        <PropertyRef Name="QueId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_role_userrole">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_application">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_notification">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_userrating">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserRating" Type="Self.UserRating" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserRating">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_userrole">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AwardDBModelStoreContainer">
+    <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicationDetails" EntityType="Self.ApplicationDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Award" EntityType="Self.Award" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AwardQuestions" EntityType="Self.AwardQuestions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRating" EntityType="Self.UserRating" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_application_applicationdetails" Association="Self.FK_application_applicationdetails">
+      <End Role="Application" EntitySet="Application" />
+      <End Role="ApplicationDetails" EntitySet="ApplicationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_application_userrating" Association="Self.FK_application_userrating">
+      <End Role="Application" EntitySet="Application" />
+      <End Role="UserRating" EntitySet="UserRating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_award_application" Association="Self.FK_award_application">
+      <End Role="Award" EntitySet="Award" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK_award_awardquestions" Association="Self.FK_award_awardquestions">
+      <End Role="Award" EntitySet="Award" />
+      <End Role="AwardQuestions" EntitySet="AwardQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_award_subcate" Association="Self.FK_award_subcate">
+      <End Role="SubCategory" EntitySet="SubCategory" />
+      <End Role="Award" EntitySet="Award" />
+    </AssociationSet>
+    <AssociationSet Name="FK_award_userrole" Association="Self.FK_award_userrole">
+      <End Role="Award" EntitySet="Award" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cate_subcate" Association="Self.FK_cate_subcate">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="SubCategory" EntitySet="SubCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_questions_applicationdetails" Association="Self.FK_questions_applicationdetails">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="ApplicationDetails" EntitySet="ApplicationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_questions_awardquestions" Association="Self.FK_questions_awardquestions">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="AwardQuestions" EntitySet="AwardQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_role_userrole" Association="Self.FK_role_userrole">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_application" Association="Self.FK_user_application">
+      <End Role="User" EntitySet="User" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_notification" Association="Self.FK_user_notification">
+      <End Role="User" EntitySet="User" />
+      <End Role="Notification" EntitySet="Notification" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_userrating" Association="Self.FK_user_userrating">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserRating" EntitySet="UserRating" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_userrole" Association="Self.FK_user_userrole">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

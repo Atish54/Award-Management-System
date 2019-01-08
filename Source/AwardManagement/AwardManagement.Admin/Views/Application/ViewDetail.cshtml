@@ -1,0 +1,221 @@
+﻿@{
+    ViewBag.Title = "Application details";
+}
+
+<script>
+    $(document).ready(function () {
+        $('.next').click(function () {
+            $('.nav-pills > .active').next('li').find('a').trigger('click');
+        });
+        $('.previous').click(function () {
+            $('.nav-pills > .active').prev('li').find('a').trigger('click');
+        });
+    })
+</script>
+
+<script type="text/javascript">
+
+
+    $('.success').click(function () {
+        swal({
+            title: "Are you sure want to remove this item?",
+            text: "You will not be able to recover this item",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Confirm",
+            cancelButtonText: "Cancel",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+          function (isConfirm) {
+              if (isConfirm) {
+                  swal("Deleted!", "Your item deleted.", "success");
+              } else {
+                  swal("Cancelled", "You Cancelled", "error");
+              }
+          });
+    });
+
+
+</script>
+
+
+
+
+
+
+
+    <div class="col-md-8 col-md-offset-2">
+        <h3 class="title text-center">Page Subcategories</h3>
+        <br />
+        <div class="card">
+            <div class="nav-center">
+                <ul class="nav nav-pills nav-pills-icons" role="tablist">
+                    <li class="active">
+                        <a href="#description-1" role="tab" data-toggle="tab">
+                            <i class="material-icons">info</i> Basic Details
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#schedule-1" role="tab" data-toggle="tab">
+                            <i class="material-icons">question_answer</i>Answers
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tasks-1" role="tab" data-toggle="tab">
+                            <i class="material-icons">stars</i> Ratings
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tasks-2" role="tab" data-toggle="tab">
+                            <i class="fa fa-check" aria-hidden="true"></i> Submit
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="description-1">
+                    <div class="card-content">
+                        <form class="form-horizontal">
+                            <div class="row">
+                                <label class="col-md-3 label-on-left">Applicant Name</label>
+                                <div class="col-md-5">
+                                    <div class="form-group label-floating is-empty">
+                                        <label class="control-label"></label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-3 label-on-left">Designation</label>
+                                <div class="col-md-5">
+                                    <div class="form-group label-floating is-empty">
+                                        <label class="control-label"></label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wizard-footer">
+                                <div class="pull-right">
+                                    <button type='button' class='btn btn-next btn-fill btn-primary btn-wd next' name='next' a href="#schedule-1" role="tab" data-toggle="tab">Next<i class="material-icons">keyboard_arrow_right</i></button>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="schedule-1">
+                    <div class="card-content">
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        <h4 class="panel-title">
+                                            Why are you intrested in this Award?
+                                            <i class="material-icons">keyboard_arrow_down</i>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                        A better way to answer it is to talk about your experience in a way that positions you as being a perfect match for the role. “Yes, you should tell a story
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <h4 class="panel-title">
+                                            How Do You Decide What to do Next?
+                                            <i class="material-icons">keyboard_arrow_down</i>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="panel-body">
+                                        one with a very clear beginning, middle, and end,” says Mavi. “You should be able to end whatever you say with, ‘So that’s why I’m looking to make a move and am really excited about this opportunity.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingThree">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <h4 class="panel-title">
+                                            What makes you a good candidate for this Award?
+                                            <i class="material-icons">keyboard_arrow_down</i>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                    <div class="panel-body">
+                                        A good answer, however, revolves around the mission, vision, and values of the company. “If they are a match for your goals and desires, then talk about that,” he says. “Talk about being connected to the values of the company
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="wizard-footer">
+                            <div class="pull-right">
+                                <button type='button' class='btn btn-next btn-fill btn-primary btn-wd next' name='next' a href="#tasks-1" role="tab" data-toggle="tab">Next<i class="material-icons">keyboard_arrow_right</i></button>
+                            </div>
+                            <div class="pull-left">
+                                <button type='button' class='btn btn-previous btn-fill btn-primary btn-wd previous' name='next' a href="#description-1" role="tab" data-toggle="tab"><i class="material-icons">keyboard_arrow_left</i> Privious</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="tasks-1">
+
+
+                    <div class="card-content">
+                        <b>Rating</b>
+                        <br /><b>Comment</b>
+                        <div class="form-group label-floating">
+                            <label class="control-label">Comment on these Applications</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <br />
+                        <div class="wizard-footer">
+                            <div class="pull-right">
+                                <button type='button' class='btn btn-next btn-fill btn-primary btn-wd next' name='next' a href="#tasks-2" role="tab" data-toggle="tab">Next<i class="material-icons">keyboard_arrow_right</i></button>
+                            </div>
+                            <div class="pull-left">
+                                <button type='button' class='btn btn-previous btn-fill btn-primary btn-wd previous' name='next' a href="#schedule-1" role="tab" data-toggle="tab"><i class="material-icons">keyboard_arrow_left</i>Privious</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="tasks-2">
+
+
+                    <div class="card-content">
+                        <b>What you want to do ?</b>
+                        <br />
+                        <br />You want to Procced further these application or reject it from here ? Please Select option Accordingly.
+                        <div class="pager">
+
+                            <button class="btn btn-success success">Accept <i class="material-icons">check</i></button>
+                            <button class="btn btn-danger">Reject <i class="material-icons">close</i></button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+

@@ -1,0 +1,140 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="rose">
+                        <i class="material-icons">list</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Category</h4>
+                        <select class="selectpicker" data-style="select-with-transition" title="Single Select" (change)="onChangeCate($event)"data-size="85">
+                            <!-- <option> Cte1 </option>
+                            <option> Cte2 </option>
+                            <option> Cte3 </option>
+                            <option> Cte4 </option> -->  <option disabled= selected>Choose Category</option>
+                            <option *ngFor="let category of  _apiservices.categories" value="{{category.CateId}}">{{category.Category1}}</option>    
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="rose">
+                        <i class="material-icons">list</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Sub Category</h4>
+                        <select class="selectpicker" data-style="select-with-transition" (change)="subcateChnge($event)" title="Single Select" data-size="7">
+                            <option disabled= selected>Choose Sub Category</option>
+                            <option *ngFor="let scate of _apiservices.sCategories" value="{{scate.SubCateId}}">{{scate.SubCategory1}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-md-12">
+                        <div class="card">
+                                <div class="card-header card-header-icon" data-background-color="rose">
+                                    <i class="material-icons">assignment</i>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="card-title">Awards List</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-shopping">
+                                                <thead>
+                                                    <tr>
+                                                      <th class="text-left">Award</th>
+                                                      <th class="text-left">Category</th>
+                                                      <th class="text-left">Sub Category</th>
+                                                      <th class="text-left">Start Date</th>
+                                                      <th class="text-left">End Date</th>
+                                                      <th class="text-left">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                              <tbody>
+                                                  <tr *ngFor="let award of _apiservices.awardlist">
+                                                      <td class="td-name">
+                                                            {{award.AwardName}}
+                                                            <br />
+                                                            <small>{{award.ShortDescription}}</small>
+                                                      </td>
+                                                      <td >
+                                                            {{award.SubCategory.Category.Category1}}
+                                                      </td>
+                                                      <td>
+                                                         {{award.SubCategory.SubCategory1}}
+                                                      </td>
+                                                      <td>{{award.StartDate | date}} </td>
+                                                      <td>{{award.EndDate| date}} </td>
+                                                      <td class="text-left">
+                                                          <!-- notice modal -->
+                                <div class="modal fade" id="noticeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-notice">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
+                                                    <h5 class="modal-title" id="myModalLabel">Awards Details</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="instruction">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <strong>{{award.AwardName}}</strong>
+                                                                <p>{{award.LongDescription}}</p>
+                                                                <p><i class="material-icons"></i><br/><strong>Start Date:{{award.StartDate | date}} </strong>
+                                                                    <br/><strong>End Date:{{award.EndDate | date}}</strong></p>
+                                                                <p><i class="material-icons">event</i>
+                                                                <br><strong>Category: {{award.SubCategory.Category.Category1}} </strong>
+                                                                <br><strong>Sub Category: {{award.SubCategory.SubCategory1 }} </strong>
+                                                                </p>
+                                                            </div>
+                                                            <!-- <div class="col-md-4">
+                                                                 <div class="picture">
+                                                                    <img src="../../../assets/img/card-1.jpeg" alt="Thumbnail Image" class="img-rounded img-responsive">
+                                                                </div> 
+                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="instruction">
+                                                        <div class="row">
+                                                            <div class="col-md-8">
+                                                                <strong>2. Apply</strong>
+                                                                <p>The first step is to create an account at
+                                                                    <a href="https://www.creative-tim.com/">Creative Tim</a>. You can choose a social network or go for the classic version, whatever works best for you.</p>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="picture">
+                                                                    <img src="../../../assets/img/card-2.jpeg" alt="Thumbnail Image" class="img-rounded img-responsive">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+                                                <div class="modal-footer text-center">
+                                                    <button type="button" class="btn btn-info btn-round" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- end notice modal -->
+                                                          <button class="btn btn-warning btn-just-icon btn-round" title="Award Detail" data-toggle="modal" data-target="#noticeModal">
+                                                            <i class="material-icons">assignment</i>
+                                                        </button>
+                                                        <button class="btn btn-success btn-just-icon btn-round" (click)="newpath(award.AwdId)">
+                                                                <i class="material-icons">edit</i>
+                                                        </button>
+                                                    </td>
+                                                  
+                                                  </tr>
+                                                  <tr>
+                                                      <td colspan="6"></td>
+                                                  </tr>
+                                              </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+        </div>
+    </div>
+</div>

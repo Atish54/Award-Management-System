@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="64c4ac1de59448b7b133176e3a0fca20" Name="Diagram1">
+        <EntityTypeShape EntityType="AwardDBModel.Application" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AwardDBModel.ApplicationDetail" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AwardDBModel.Award" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AwardDBModel.AwardQuestion" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AwardDBModel.Category" Width="1.5" PointX="1.5" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AwardDBModel.News" Width="1.5" PointX="7.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AwardDBModel.Notification" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AwardDBModel.Question" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AwardDBModel.Role" Width="1.5" PointX="3.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AwardDBModel.SubCategory" Width="1.5" PointX="1.5" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AwardDBModel.User" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AwardDBModel.UserRating" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AwardDBModel.UserRole" Width="1.5" PointX="6" PointY="6.5" IsExpanded="true" />
+        <AssociationConnector Association="AwardDBModel.FK_application_applicationdetails" ManuallyRouted="false" />
+        <AssociationConnector Association="AwardDBModel.FK_application_userrating" ManuallyRouted="false" />
+        <AssociationConnector Association="AwardDBModel.FK_award_application" ManuallyRouted="false" />
+        <AssociationConnector Association="AwardDBModel.FK_user_application" ManuallyRouted="false" />
+        <AssociationConnector Association="AwardDBModel.FK_questions_applicationdetails" ManuallyRouted="false" />
+        <AssociationConnector Association="AwardDBModel.FK_award_awardquestions" ManuallyRouted="false" />
+        <AssociationConnector Association="AwardDBModel.FK_award_subcate" ManuallyRouted="false" />
+        <AssociationConnector Association="AwardDBModel.FK_award_userrole" ManuallyRouted="false" />
+        <AssociationConnector Association="AwardDBModel.FK_questions_awardquestions" ManuallyRouted="false" />
+        <AssociationConnector Association="AwardDBModel.FK_cate_subcate" ManuallyRouted="false" />
+        <AssociationConnector Association="AwardDBModel.FK_user_notification" ManuallyRouted="false" />
+        <AssociationConnector Association="AwardDBModel.FK_role_userrole" ManuallyRouted="false" />
+        <AssociationConnector Association="AwardDBModel.FK_user_userrating" ManuallyRouted="false" />
+        <AssociationConnector Association="AwardDBModel.FK_user_userrole" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

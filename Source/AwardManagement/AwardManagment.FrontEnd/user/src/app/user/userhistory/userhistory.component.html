@@ -1,0 +1,99 @@
+ 
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="purple">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">User History</h4>
+                        <div class="toolbar">
+          
+                        </div>
+                        <div class="material-datatables table-responsive">
+                            <table id="datatables1" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                <thead>
+                                    <tr>
+                                    <th>Applicant Name</th>
+                                      <th>Award Name</th>
+                                      <th>Category</th>
+                                      <th>Sub Category</th>
+                                      <th>Applied Date</th>
+                                      <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let app of application">
+                                        <td>{{app.User.Name}}</td>
+                                        <td>{{app.Award.AwardName}}</td>
+                                        <td>{{app.Award.SubCategory.Category.Category1}}</td>
+                                        <td>{{app.Award.SubCategory.SubCategory1}}</td>
+                                        <td>{{app.AppliedDate | date }}</td>
+
+                                        <td>
+                                            <div class="modal fade" id="noticeModal" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  >
+                                                <div class="modal-dialog modal-notice">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close"  data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
+                                                            <h5 class="modal-title" id="myModalLabel">Application Details</h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="instruction">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <strong>{{app.Award.AwardName}}</strong>
+                                                                        <p><strong>Applied By:</strong> {{app.User.Name}}</p>
+                                                                        <p><i class="material-icons">date_range</i><br/><strong>Applied By:{{app.AppliedDate | date}}</strong>
+                                                                            </p>
+                                                                        <p><i class="material-icons">event</i>
+                                                                        <br><strong *ngFor="let appDetail of app.ApplicationDetails">
+                                                                            
+                                                                        </strong>
+                                                                        <br><strong>Sub Category: Coding</strong>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer text-center">
+                                                            <button type="button" class="btn btn-info btn-round" data-dismiss="modal">CLOSE</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                            <button class="btn btn-warning btn-just-icon btn-round" data-toggle="modal" data-target="#noticeModal">
+                                                <i class="material-icons">assignment</i>
+                                            </button>
+                                        <!-- </span> -->
+                                    
+                                        
+                                    
+                                    </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                            <th>Applicant Name</th>
+                                            <th>Award Name</th>
+                                            <th>Category</th>
+                                            <th>Sub Category</th>
+                                            <th>Applied Date</th>
+                                            <th>Status</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- end content-->
+                </div>
+                <!--  end card  -->
+            </div>
+            <!-- end col-md-12 -->
+        </div>
+        <!-- end row -->
+    </div>
+</div>
+ 

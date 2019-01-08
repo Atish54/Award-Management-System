@@ -1,0 +1,310 @@
+﻿
+@model AwardManagment.BusinessObjects.Model.BOCategory
+@{
+    ViewBag.Title = "ManageCategory";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnclear").hide();
+    });
+</script>
+
+@if (ViewBag.UpdateSuccess == true)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Done",
+                text: "Updated Sucessfully!",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+                type: "success"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+    </script>
+}
+else if (ViewBag.UpdateSuccess == false)
+{
+<script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Done",
+                text: "Update Data Unsucessfully!",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+                type: "success"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+</script>
+}
+else if (ViewBag.InsertSuccess == true)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Done",
+                text: "Inserted Sucessfully!",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+                type: "success"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+    </script>
+}
+else if (ViewBag.InsertSuccess == false)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Done",
+                text: "Inserted Unsucessfully!",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+                type: "success"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+    </script>
+}
+else if (ViewBag.DataNull == true)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //swal("You select NO! Please select again!!");
+            swal({
+                title: "Information!",
+                text: "Please Enter Valid Data",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-info"
+            }).catch(swal.noop)
+        });
+
+        //Updatefunction();
+    </script>
+}
+
+<div class="main-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            @* Start Category Form *@
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="purple">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Category Detail</h4>
+                        @{Html.EnableClientValidation();}
+                        @{Html.EnableUnobtrusiveJavaScript();}
+                        @using (Html.BeginForm("InsertCategory", "Category", FormMethod.Post, new { @class = "form-horizontal" }))
+                        {
+                            @Html.ValidationSummary(true) // dispaying error
+
+                            <div id="cateform">
+                                <div class="row">
+                                    <label class="col-md-3 label-on-left bottom">Name</label>
+
+                                    <div class="col-md-9">
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label"></label>
+                                            @Html.EditorFor(c => c.Category1, new { htmlAttributes = new { @class = "form-control", @name = "catname", @id = "catname" } })
+                                            @Html.ValidationMessageFor(model => model.Category1)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-md-3 label-on-left">Short Description</label>
+
+                                    <div class="col-md-9">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label"></label>
+                                            @*<input type="text" class="form-control" name="catshort" id="catshort" required />*@
+                                            @Html.EditorFor(c => c.ShortDescription, new { htmlAttributes = new { @class = "form-control", @name = "catshort", @id = "catshort" } })
+                                            @Html.ValidationMessageFor(model => model.ShortDescription)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="col-md-3 label-on-left">Long Description </label>
+
+                                    <div class="col-md-9">
+                                        <div class="form-group label-floating">
+                                            <label class="control-label"></label>
+                                            @* <textarea type="text" class="form-control" id="catlong" name="catlong" required></textarea>*@
+                                            @*@Html.TextAreaFor(c => c.LongDescription, new { htmlAttributes = new { @class = "form-control", @name = "catlong", @id = "catlong" } })*@
+                                            @Html.EditorFor(c => c.LongDescription, new { htmlAttributes = new { @class = "form-control", @name = "catlong", @id = "catlong" } })
+                                            @Html.ValidationMessageFor(model => model.LongDescription)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary pull-right">Submit <i class="material-icons">send</i></button>
+                        }
+                        <button type="submit" id="btnclear" onclick="ClearData()" class="btn btn-primary pull-left">Clear @*<i class="material-icons">send</i>*@</button>
+
+                    </div>
+                </div>
+            </div>
+
+            @* End Category Form *@
+
+            @*  Start Manage Category *@
+
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-icon" data-background-color="purple">
+                        <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="card-title">Category Detail</h4>
+                        <div class="toolbar">
+                            <!--        Here you can write extra buttons/actions for the toolbar              -->
+                        </div>
+                        <div class="material-datatables table-responsive">
+                            <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Description</th>
+                                        <th class="disabled-sorting">Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+
+                                    @foreach (var item in ViewBag.Data)
+                                    {
+                                        if (item.IsDisable == false)
+                                        {
+                                            <tr>
+                                                <td><button class="btn-link" onclick="demo.showCategory('@item.Category1','@item.LongDescription')"> @item.Category1 </button></td>
+                                                <td>@item.ShortDescription</td>
+                                                <td>
+                                                    <button onclick="CateOpen('@item.CateId')" class="btn btn-simple btn-warning btn-icon " title="Edit Category" @*data-toggle="modal" data-target="#Editmodal"*@><i class="material-icons">dvr</i></button>
+                                                    <button title="Remove Catrgory" onclick="RemoveCategory('@item.CateId')" class="btn btn-simple btn-danger btn-icon"><i class="material-icons">close</i></button>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- end content-->
+                </div>
+                <!--  end card  -->
+            </div>
+            @* End Manage Category *@
+            <!-- end col-md-12 -->
+        </div>
+        <!-- end row -->
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function RemoveCategory(currentId) {
+        swal({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this imaginary file!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it',
+            confirmButtonClass: "btn btn-success",
+            cancelButtonClass: "btn btn-danger",
+            buttonsStyling: false
+        }).then(function () {
+            $.ajax({
+                type: "Get",
+                url: '@Url.Action("RemoveCategory", "Category")',
+                data: { id: currentId },
+                success: function (data) {
+                    swal({
+                        title: 'Deleted!',
+                        text: 'Your imaginary file has been deleted.',
+                        type: 'success',
+                        confirmButtonClass: "btn btn-success",
+                        buttonsStyling: false
+                    }).then(function () {
+                        window.location.replace("@Url.Action("ManageCategory", "Category")");
+                    }).catch(swal.noop)
+                }
+            })
+        }, function (dismiss) {
+            // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+            if (dismiss === 'cancel') {
+                swal({
+                    title: 'Cancelled',
+                    text: 'Your imaginary file is safe :)',
+                    type: 'error',
+                    confirmButtonClass: "btn btn-info",
+                    buttonsStyling: false,
+
+                }).catch(swal.noop)
+            }
+        })
+    }
+</script>
+
+<script type="text/javascript">
+    function ClearData() {
+
+        $('#cateid').remove();
+        $('#catname').val("");
+        $('#catshort').val("");
+        $('#catlong').val("");
+        $('#btnclear').hide();
+    }
+</script>
+
+<script type="text/javascript">
+    function CateOpen(currentId) {
+        $.ajax({
+            type: "Get",
+            url: '@Url.Action("GetCategory", "Category")',
+            data: { id: currentId },
+            success: function (data) {
+                $('#Preview').html(data);
+                $('#catname').val(data.CateName);
+                $('#catshort').val(data.ShortDesc);
+                $('#catlong').val(data.longDesc);
+                $('#btnclear').show();
+                if ($('#cateid').length) {
+                    $('#cateid').val(data.CateId);
+                } else {
+                    $('#cateform').append('<input type="hidden" id="cateid" name="cateid">');
+                    $('#cateid').val(data.CateId);
+                }
+                // document.getElementById('').appendChild(input);
+            }
+        })
+    }
+</script>
